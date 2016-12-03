@@ -15,6 +15,11 @@ namespace Project_entity_2.Controllers
         public ActionResult Random()
         {
             var movies = new Movies() { Name = "Shrek!" };
+            // I think this code below explains where and how the View is return
+            // ing the info in the movies object.
+            // var viewResult = new ViewResult();
+            // viewResult.ViewData.Model;
+
             
             return View(movies);
             // return Content("Hello World!");
@@ -39,6 +44,7 @@ namespace Project_entity_2.Controllers
             return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
         }
 
+        [Route("movies/released/{year}/{month:regex(\\d{2}):range(1, 12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(year + "/" + month);
